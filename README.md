@@ -25,6 +25,12 @@ A boilerplate/starter project for quickly building APIs using Golang with Clean 
 +-- cmd
 ```
 
+## 💡 Reference
+- [Clean architechture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+
+![Clean Architechture Image](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
+
+
 ## 👮 License
 
 [MIT](LICENSE)
