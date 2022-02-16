@@ -16,3 +16,9 @@
 
 # sqlite
 **/boilerplatedb
+
+# VSCode
+.vscode
+
+# Environment
+config-local.yaml

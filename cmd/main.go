@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"os"
+	"strings"
 
 	"github.com/frasnym/go-boilerplate/app/controller"
 	gorm "github.com/frasnym/go-boilerplate/app/infrastructure/gorm/database"
@@ -10,13 +12,30 @@ import (
 	router "github.com/frasnym/go-boilerplate/app/infrastructure/http"
 	"github.com/frasnym/go-boilerplate/app/infrastructure/logging"
 	"github.com/frasnym/go-boilerplate/app/usecase/fanuser"
+	"github.com/spf13/viper"
 )
 
 func main() {
-	const port string = ":8000"
+	// Initialize configuration
+	var configProfile = "local"
+	if os.Getenv("BP_ENV") != "" {
+		configProfile = os.Getenv("BP_ENV")
+	}
+
+	var configFileName []string
+	configFileName = append(configFileName, "config-")
+	configFileName = append(configFileName, configProfile)
+
+	viper.SetConfigType("yaml")
+	viper.SetConfigName(strings.Join(configFileName, ""))
+	viper.AddConfigPath("../")
+	err := viper.ReadInConfig()
+	if err != nil {
+		panic(err)
+	}
 
 	// Initialize database
-	db, err := gorm.NewConnectionDB("sqlite", "../boilerplatedb", "localhost", "user", "password", 5432)
+	db, err := gorm.NewConnectionDB(viper.GetString("database.driver"), viper.GetString("database.name"), viper.GetString("database.host"), viper.GetString("database.username"), viper.GetString("database.password"), viper.GetInt("database.port"))
 	if err != nil {
 		panic(err)
 	}
@@ -44,5 +63,5 @@ func main() {
 	httpRouter.POST("/fanuser", fanuserController.SignUpFanuser)
 
 	// Start service
-	httpRouter.SERVE(port)
+	httpRouter.SERVE(viper.GetString("server.port"))
 }
