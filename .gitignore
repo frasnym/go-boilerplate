@@ -15,4 +15,4 @@
 # vendor/
 
 # sqlite
-cmd/boilerplatedb
+**/boilerplatedb

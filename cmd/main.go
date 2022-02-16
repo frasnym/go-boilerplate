@@ -16,7 +16,7 @@ func main() {
 	const port string = ":8000"
 
 	// Initialize database
-	db, err := gorm.NewConnectionDB("sqlite", "boilerplatedb", "localhost", "user", "password", 5432)
+	db, err := gorm.NewConnectionDB("sqlite", "../boilerplatedb", "localhost", "user", "password", 5432)
 	if err != nil {
 		panic(err)
 	}
