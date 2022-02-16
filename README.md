@@ -8,6 +8,7 @@ A boilerplate/starter project for quickly building APIs using Golang with Clean 
 - **Logging**: Switchable between [Zap](https://github.com/uber-go/zap) or plain logging.
 - **SQL database**: Using [GORM](https://gorm.io/index.html) for ORM library. (will be added more later...)
 - **Testing**: Use [Testify](https://pkg.go.dev/github.com/stretchr/testify) for testing framework.
+- **[Docker](https://docker.com/)** support
 
 ## 🌲 Project Folder Structure
 
@@ -25,6 +26,12 @@ A boilerplate/starter project for quickly building APIs using Golang with Clean 
 |  +-- usecase
 +-- cmd
 ```
+
+## How to
+- Build docker image: `docker build -t go-boilerplate .`
+- Remove <none> <none> image: `docker rmi $(docker images -f "dangling=true" -q)`
+- Run docker: `docker run -p 8000:8000 go-boilerplate`
+
 
 ## 💡 Reference
 - [Clean architechture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
