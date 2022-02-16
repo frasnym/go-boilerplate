@@ -10,6 +10,7 @@ import (
 type defaultLogging struct{}
 
 func NewDefaultLogging() Logging {
+	fmt.Println("Default logging initilized")
 	return &defaultLogging{}
 }
 

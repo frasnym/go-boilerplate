@@ -1,6 +1,7 @@
 package logging
 
 import (
+	"fmt"
 	"net/http"
 	"runtime/debug"
 	"time"
@@ -11,6 +12,7 @@ import (
 type zapLogging struct{}
 
 func NewZapLogging() Logging {
+	fmt.Println("Zap logging initilized")
 	return &zapLogging{}
 }
 
