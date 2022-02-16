@@ -27,7 +27,7 @@ A boilerplate/starter project for quickly building APIs using Golang with Clean 
 +-- cmd
 ```
 
-## How to
+## ❓ How to
 - Build docker image: `docker build -t go-boilerplate .`
 - Remove <none> <none> image: `docker rmi $(docker images -f "dangling=true" -q)`
 - Run docker: `docker run -p 8000:8000 go-boilerplate`
