@@ -50,8 +50,9 @@ func main() {
 	// Initialize route
 	var (
 		// log        logging.Logging = logging.NewDefaultLogging() // Use default logging
-		log        logging.Logging = logging.NewZapLogging() // Use zap for logging
-		httpRouter router.Router   = router.NewMuxRouter(log.LoggingMiddleware)
+		log logging.Logging = logging.NewZapLogging() // Use zap for logging
+		// httpRouter router.Router   = router.NewMuxRouter(log.LoggingMiddleware)
+		httpRouter router.Router = router.NewGinRouter(log.LoggingMiddleware)
 	)
 
 	// Assign route
