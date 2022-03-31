@@ -1,0 +1,29 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3.7'
+
+services:
+  production:
+    container_name: goboilerplate_prod
+    image: goboilerplate_prod
+    restart: "no"
+    build:
+      context: . 
+      dockerfile: ./docker/production/Dockerfile
+    working_dir: /app
+    ports:
+      - "8081:8081" 
+
+  development:
+    container_name: goboilerplate_dev
+    image: goboilerplate_dev
+    restart: "no"
+    build:
+      context: . 
+      dockerfile: ./docker/development/Dockerfile.nodemon
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    working_dir: /app
+    ports:
+      - "5600:5600" 

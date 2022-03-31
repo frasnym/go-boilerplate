@@ -1,0 +1,15 @@
+# Dockerfile References: https://docs.docker.com/engine/reference/builder/
+
+# Build stage
+FROM golang:1.18.0-alpine as base
+LABEL maintainer="FrasNym <frastyawan.nym@gmail.com>"
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash g++
+WORKDIR /app
+COPY . .
+RUN go mod download
+WORKDIR /root
+RUN apk add --update npm
+RUN npm install -g nodemon
+WORKDIR /app
+ENTRYPOINT nodemon --exec go run main.go --signal SIGTERM
