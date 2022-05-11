@@ -54,7 +54,7 @@ $ docker-compose exec <production|development> sh
 
 ## ❓ How to
 - Build docker image with cutom tag: `docker build -t go-boilerplate .`
-- Build docker image with custom directory: `docker build -f ./docker/Dockerfile .`
+- Build docker image with custom Dockerfile: `docker build -f ./docker/Dockerfile .`
 - Remove **none:none** image: `docker rmi $(docker images -f "dangling=true" -q)`
 - Run docker: `docker run -p 8000:8000 go-boilerplate`
 - Sync local branch with remote: `git fetch -p`
